@@ -1,16 +1,17 @@
 import requests
+import credentials
 
 def weather(city_name, api_key):
 
     url = "http://api.weatherstack.com/current"
 
-    params = {
+    request = {
         "access_key" : api_key,
         "query" : city_name
     }
 
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=request)
         data = response.json()
 
         if "current" in data:
@@ -24,6 +25,6 @@ def weather(city_name, api_key):
 
 if __name__ == "__main__":
 
-    api_key ="741dfd459e8352b5c9425e911fb29de1"
+    api_key = credentials.api_key
     city = input("Enter city: ")
     weather(city, api_key)
