@@ -1,5 +1,8 @@
 import requests
-import credentials
+import json
+
+with open("credentials.json") as file:
+    API_KEY = json.load(file)['api_key']
 
 def weather(city_name, api_key):
 
@@ -25,6 +28,6 @@ def weather(city_name, api_key):
 
 if __name__ == "__main__":
 
-    api_key = credentials.api_key
+    api_key = API_KEY
     city = input("Enter city: ")
     weather(city, api_key)
